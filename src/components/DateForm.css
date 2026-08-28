@@ -1,0 +1,211 @@
+.dateform {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.dateform__card {
+  width: min(440px, 100%);
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.dateform__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0 0 6px;
+}
+
+.dateform__subtitle {
+  color: var(--muted);
+  margin: 0 0 26px;
+}
+
+.dateform__row {
+  display: flex;
+  gap: 14px;
+}
+.dateform__row .dateform__field {
+  flex: 1;
+  min-width: 0;
+}
+
+.dateform__field {
+  margin-bottom: 24px;
+}
+
+.dateform__label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.dateform__date {
+  width: 100%;
+  background: #14101c;
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 1rem;
+  color-scheme: dark;
+}
+.dateform__date:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+
+.dateform__slider {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pink) 0%, var(--gold) 100%);
+  margin: 6px 0 10px;
+}
+.dateform__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid #1a1420;
+  box-shadow: 0 0 12px var(--gold-soft);
+  cursor: pointer;
+}
+.dateform__slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid #1a1420;
+  cursor: pointer;
+}
+
+.dateform__mood-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  opacity: 0.45;
+  padding: 0 2px;
+}
+.dateform__mood-row span {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.dateform__mood-row .is-active {
+  opacity: 1;
+  transform: scale(1.4);
+  filter: drop-shadow(0 0 10px var(--gold)) drop-shadow(0 0 18px var(--pink-soft)) brightness(1.35);
+}
+
+.dateform__mood-label {
+  text-align: center;
+  margin: 8px 0 0;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.dateform__submit {
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  background: var(--pink);
+  color: #2a0714;
+  box-shadow: 0 0 30px var(--pink-soft);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.dateform__submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+.dateform__submit:disabled {
+  background: var(--pink-deep);
+  opacity: 0.45;
+  box-shadow: none;
+}
+
+/* ---------- écran de confirmation ---------- */
+.confirm {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.confirm__emoji {
+  font-size: 3.2rem;
+  filter: drop-shadow(0 0 20px rgba(255, 61, 120, 0.4));
+  margin-bottom: 10px;
+}
+
+.confirm__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  margin: 0 0 16px;
+}
+
+.confirm__date {
+  font-size: 1.15rem;
+  margin: 0 0 10px;
+}
+.confirm__date em {
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.confirm__mood {
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+.confirm__bar {
+  width: min(280px, 80%);
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.confirm__bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pink), var(--gold));
+  transition: width 0.4s ease;
+}
+
+.confirm__sign {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--muted);
+}
+
+@media (max-width: 420px) {
+  .dateform__row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .dateform__card {
+    padding: 28px 20px;
+  }
+}

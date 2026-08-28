@@ -1,0 +1,85 @@
+.reveal {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.reveal__emoji {
+  font-size: 3.4rem;
+  margin-bottom: 6px;
+  animation: pop-in 0.5s cubic-bezier(0.3, 1.5, 0.4, 1) both;
+}
+@keyframes pop-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.reveal__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 8vw, 4.2rem);
+  color: var(--pink);
+  margin: 0 0 6px;
+  text-shadow: 0 0 40px var(--pink-soft);
+}
+
+.reveal__subtitle {
+  color: var(--muted);
+  margin: 0 0 32px;
+}
+
+.reveal__card {
+  width: min(360px, 100%);
+  background: rgba(50, 24, 20, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+  padding: 36px 24px;
+  box-shadow: 0 0 40px var(--gold-soft);
+}
+
+.reveal__hearts {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 14px var(--pink-soft));
+}
+
+.reveal__prize {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.reveal__next {
+  color: var(--muted);
+  margin: 26px 0 0;
+}
+
+.reveal__cta {
+  margin-top: 26px;
+  padding: 15px 36px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  background: var(--gold);
+  color: #2a1c04;
+  box-shadow: 0 0 30px var(--gold-soft);
+  transition: transform 0.15s ease;
+}
+.reveal__cta:hover {
+  transform: translateY(-2px);
+}

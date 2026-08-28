@@ -1,0 +1,177 @@
+.landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+}
+
+.landing__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(90, 55, 40, 0.35);
+  border: 1px solid rgba(242, 184, 75, 0.25);
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.landing__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 6vw, 2.9rem);
+  margin: 0 0 12px;
+  max-width: 20ch;
+}
+
+.landing__subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin: 0 0 48px;
+}
+
+.giftbox {
+  position: relative;
+  background: none;
+  padding: 0;
+  width: clamp(160px, 34vw, 210px);
+  height: clamp(160px, 34vw, 210px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.giftbox__glow {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, var(--pink-soft) 0%, transparent 70%);
+  filter: blur(6px);
+  animation: glow-breathe 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.giftbox__stack {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* passe le cadeau du rouge par défaut à un rose/magenta assorti au thème */
+  filter: hue-rotate(300deg) saturate(1.35) brightness(1.05);
+}
+
+.giftbox__emoji {
+  position: relative;
+  font-size: clamp(6rem, 22vw, 9rem);
+  line-height: 1;
+  display: block;
+  filter: drop-shadow(0 14px 22px rgba(194, 42, 92, 0.4));
+  animation: box-bob 3.2s ease-in-out infinite;
+  transition: transform 0.25s cubic-bezier(0.3, 0.8, 0.3, 1);
+}
+
+.giftbox__bow {
+  position: absolute;
+  top: 6%;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  line-height: 1;
+  animation: box-bob 3.2s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.3, 0.8, 0.3, 1), opacity 0.3s ease;
+}
+
+@keyframes box-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-2deg);
+  }
+}
+
+/* survol : le nœud se soulève légèrement, comme un couvercle qui va s'ouvrir */
+.giftbox:not(:disabled):hover .giftbox__bow {
+  animation-play-state: paused;
+  transform: translateY(-10px) rotate(-8deg);
+}
+.giftbox:not(:disabled):hover .giftbox__emoji {
+  animation-play-state: paused;
+  transform: translateY(-3px) scale(1.03);
+}
+.giftbox:not(:disabled):hover .giftbox__glow {
+  opacity: 1;
+}
+
+.giftbox:not(:disabled):active .giftbox__emoji {
+  transform: scale(0.94);
+}
+
+/* ouverture au clic : le nœud (couvercle) s'envole en premier, façon
+   couvercle qui saute, puis la boîte tremble et disparaît dans les confettis */
+.giftbox.is-opening .giftbox__bow {
+  animation: lid-pop 0.55s cubic-bezier(0.25, 0.9, 0.2, 1) forwards;
+}
+@keyframes lid-pop {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-70px) rotate(70deg) scale(1.15);
+    opacity: 0;
+  }
+}
+
+.giftbox.is-opening .giftbox__emoji {
+  animation: box-open 0.85s cubic-bezier(0.3, 0.4, 0.2, 1) 0.15s forwards;
+}
+@keyframes box-open {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(0) rotate(-6deg) scale(1.03);
+  }
+  40% {
+    transform: translateY(0) rotate(6deg) scale(1.05);
+  }
+  100% {
+    transform: translateY(10px) scale(1.25);
+    opacity: 0;
+  }
+}
+
+.landing__hint {
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  min-height: 1.3em;
+}
+
+@media (max-width: 380px) {
+  .landing__badge {
+    font-size: 0.62rem;
+    padding: 7px 12px;
+  }
+}

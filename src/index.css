@@ -1,0 +1,95 @@
+:root {
+  --bg: #0b0a12;
+  --bg-deep: #060509;
+  --panel: rgba(30, 20, 30, 0.55);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text: #f7f2f0;
+  --muted: #9b93a8;
+
+  --pink: #ff3d78;
+  --pink-deep: #c22a5c;
+  --pink-soft: rgba(255, 61, 120, 0.22);
+  --gold: #f2b84b;
+  --gold-soft: rgba(242, 184, 75, 0.22);
+  --gold-deep: #8a6620;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 55% 40% at 50% 15%, rgba(255, 61, 120, 0.14) 0%, transparent 62%),
+    radial-gradient(ellipse 120% 90% at 50% 105%, #17101c 0%, var(--bg-deep) 60%);
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+
+input {
+  font-family: inherit;
+}
+
+.stage {
+  animation: stage-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
